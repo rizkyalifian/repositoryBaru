@@ -99,46 +99,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <span class="sr-only">Next</span>
     </a>
 </div>
-  
-<div class="container text-center">    
-  <h3>What We Do</h3><br>
-  <div class="row">
-    <div class="col-sm-4">
-      <img src="http://localhost/CI3/assets/image/image1.jpg" class="img-responsive" style="width:100%" alt="Image">
-      <h3>Watch Dogs</h3>
-    </div>
-    <div class="col-sm-4"> 
-      <img src="http://localhost/CI3/assets/image/image2.jpg" class="img-responsive" style="width:95%" alt="Image">
-      <h3>Far Cry Primal</h3>    
-    </div>
-    <div class="col-sm-4">
-      <div class="well">
-       <p>Some text..</p>
-      </div>
-      <div class="well">
-       <p>Some text..</p>
-      </div>
-    </div>
-  </div>
-</div><br>
 
-  /*<?php foreach ($artikel as $key): ?>
+
+  <a href="v_blog/add" class="btn btn-primary">Add Game</a>
+      <?php foreach ($artikel as $key): ?>
 
         <div class="well well-sm">
           <div class="row">
+
             <div class="col-sm-12 col-md-12">
               <h3><?php echo $key->judul ?></h3>
               <br>
               <img src="http://localhost/CI3/assets/image/<?php echo $key->gambar;?>" alt="Image" width="500">
               <p>
                 diupload tanggal : <?php echo $key->date ?><br>
-                <a href="<?php echo site_url()?>v_blog/detail/<?php echo $key->id ?>">Read More ...</a>
+                <a href="<?php echo site_url()?>V_blog/detail/<?php echo $key->id ?>">Read More ...</a>
               </p>
+              <a href='<?php echo site_url()?>v_blog/edit/<?php echo $key->id ?>' class='btn btn-sm btn-info'>Update</a>
+              <a href='<?php echo site_url()?>v_blog/delete/<?php echo $key->id ?>' class='btn btn-sm btn-danger'>Hapus</a>
             </div>
           </div>
         </div>
-        <?php endforeach ?>*\
-
+        <?php endforeach ?>
 <footer class="container-fluid text-center">
    <div class="col-sm-5">
                   <p>Copyright &copy; 2017</p>
