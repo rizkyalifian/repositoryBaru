@@ -50,7 +50,12 @@ class list_blog extends CI_Model {
 			'judul' => $this->input->post('judul'),
 			'date' => $this->input->post('date'),
 			'content' => $this->input->post('content'),
-			'gambar' => $upload['file']['file_name']		
+			'gambar' => $upload['file']['file_name'],
+			'link_download' => $this->input->post('link_download'),
+			'Pengembang' => $this->input->post('Pengembang'),
+			'Platforms' => $this->input->post('Platforms'),
+			'Publisher' => $this->input->post('Publisher'),
+			'Rating' => $this->input->post('Rating')		
 		);
 		
 		$this->db->insert('game_blog', $data);
@@ -61,8 +66,13 @@ class list_blog extends CI_Model {
 		$judul = $this->db->escape($post['judul']);
 		$date = $this->db->escape($post['date']);
 		$content = $this->db->escape($post['content']);
+		$link_download = $this->db->escape($post['link_download']);
+		$Pengembang = $this->db->escape($post['Pengembang']);
+		$Platforms = $this->db->escape($post['Platforms']);
+		$Publisher = $this->db->escape($post['Publisher']);
+		$Rating = $this->db->escape($post['Rating']);
 
-		$sql = $this->db->query("UPDATE game_blog SET judul = $judul, date = $date, content = $content WHERE id = ".intval($id));
+		$sql = $this->db->query("UPDATE game_blog SET judul = $judul, date = $date, content = $content, link_download = $link_download, Pengembang = $Pengembang, Platforms = $Platforms, Publisher = $Publisher, Rating = $Rating WHERE id = ".intval($id));
 
 		return true;
 	}
