@@ -103,6 +103,11 @@
           <input type="text" class="form-control" name="Rating" value="<?=isset($default['Rating'])? $default['Rating'] : ""?>" >
         </div>
       </div>
+      <div class="form-group">
+            <label>Kategori</label>
+            <?php echo form_dropdown('kat_id', $kategori, set_value('kat_id'), 'class="form-control" required' ); ?>
+            <div class="invalid-feedback">Pilih dulu kategorinya gan</div>
+          </div>
       <center>
       <input class="btn btn-primary" type="submit" name="simpan" value="simpan">
       </center>
@@ -110,3 +115,11 @@
   </div>
 </body>
 </html>
+<!-- 
+<label>Kategori</label>
+            <select class="form-control" name="nama" id="kat_id">
+            <option selected>Pilih Kategori</option>
+            <?php foreach ($kategori as $key) {?>
+              <option value="<?php echo $key->kat_id; ?>"><?php echo $key->Kategori; ?></<?php
+            }?>
+             </select> -->

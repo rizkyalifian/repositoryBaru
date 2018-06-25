@@ -3,16 +3,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class list_blog extends CI_Model {
 
-	public function get_artikels(){
-		$query = $this->db->get('game_blog');
-		return $query->result();
+	 function __construct()
+    {
+    	parent::__construct();
+    }
+
+	public function get_artikels( $limit = FALSE, $offset = FALSE){
+		if($limit)
+		{
+			$this->db->limit($limit, $offset);
+		}
+		//urut berdasarkan tgl
+
+		$this->db->order_by('game_blog.date','DESC');
+		//inner join dengan tabel kategori
+		
+		$this->db->join('data_blog','data_blog.kat_id = game_blog.fk_kat_id');
+        
+        $query = $this->db->get('game_blog');
+
+    	// Return dalam bentuk object
+    	return $query->result();
 	}	
+
+	 public function get_total() 
+    {
+        // Dapatkan jumlah total artikel
+        return $this->db->count_all("game_blog");
+    }
 
 	public function get_single($id)
 	{
 		$query = $this->db->query('select * from game_blog where id='.$id);
 		return $query->result();
 	}
+
 	public function get_default($id)
 	{
 		$data = array();
@@ -55,7 +80,8 @@ class list_blog extends CI_Model {
 			'Pengembang' => $this->input->post('Pengembang'),
 			'Platforms' => $this->input->post('Platforms'),
 			'Publisher' => $this->input->post('Publisher'),
-			'Rating' => $this->input->post('Rating')		
+			'Rating' => $this->input->post('Rating'),
+			'kategori' => $this->input->post('kat_id')		
 		);
 		
 		$this->db->insert('game_blog', $data);
@@ -71,8 +97,9 @@ class list_blog extends CI_Model {
 		$Platforms = $this->db->escape($post['Platforms']);
 		$Publisher = $this->db->escape($post['Publisher']);
 		$Rating = $this->db->escape($post['Rating']);
+		$kat_id = $this->db->escape($post['kat_id']);
 
-		$sql = $this->db->query("UPDATE game_blog SET judul = $judul, date = $date, content = $content, link_download = $link_download, Pengembang = $Pengembang, Platforms = $Platforms, Publisher = $Publisher, Rating = $Rating WHERE id = ".intval($id));
+		$sql = $this->db->query("UPDATE game_blog SET judul = $judul, date = $date, content = $content, link_download = $link_download, Pengembang = $Pengembang, Platforms = $Platforms, Publisher = $Publisher, Rating = $Rating, kategori = $kat_id WHERE id = ".intval($id));
 
 		return true;
 	}
@@ -80,4 +107,20 @@ class list_blog extends CI_Model {
 	public function hapus($id){
 		$sql = $this->db->query("DELETE from game_blog WHERE id = ".intval($id));
 	}
+
+	public function get_all_artikel() {
+    	// Query Manual
+    	// $query = $this->db->query('
+    	// 		SELECT * FROM blogs
+    	// 	');
+
+        // Memakai Query Builder
+        // Urutkan berdasar tanggal
+        $this->db->order_by('game_blog.date', 'DESC');
+        
+        $query = $this->db->get('game_blog');
+
+    	// Return dalam bentuk object
+    	return $query->result();
+    }
 }

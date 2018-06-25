@@ -121,6 +121,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
         </div>
         <?php endforeach ?>
+        <?php 
+    // $links ini berasal dari fungsi pagination 
+    // Jika $links ada (data melebihi jumlah max per page), maka tampilkan
+    if (isset($links)) {
+      echo $links;
+    } 
+    ?>
 <footer class="container-fluid text-center">
    <div class="col-sm-5">
                   <p>Copyright &copy; 2017</p>

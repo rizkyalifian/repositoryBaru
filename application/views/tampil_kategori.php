@@ -75,17 +75,6 @@
       <div class="bg-image bg-parallax overlay" style="background-image:url(assets/img/bg.png)"></div>
       <!-- /Backgound Image -->
 
-      <div class="home-wrapper">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-8">
-              <h1 class="white-text">Wellcome To SMAN 1 KUTOREJO</h1>
-              <p class="lead white-text">BERSATU, BERAKSI DAN BERPRESTASI</p>
-            </div>
-          </div>
-        </div>
-      </div>
-  </div>
 <br></br>
 <br></br>
   <h1 class="black-text">FORM TAMPIL KATEGORI</h1>
@@ -108,13 +97,13 @@
                         foreach($kategori as $key):
                   ?>
                   <tr>
-                    <td><?php echo $key->id ?></td>
+                    <td><?php echo $key->kat_id ?></td>
                     <td><?php echo $key->nama ?></td>
                     <td><?php echo $key->deskripsi ?></td>
                     
                     <td>
-                      <a href="kategori/edit/ <?php echo $key->id ?>" class="btn btn-primary">Update</a>
-                      <a href="kategori/delete/ <?php echo $key->id ?>" class="btn btn-danger">Delete</a></td>
+                      <a href="kategori/edit/ <?php echo $key->kat_id ?>" class="btn btn-primary">Update</a>
+                      <a href="kategori/delete/ <?php echo $key->kat_id ?>" class="btn btn-danger">Delete</a></td>
                   </tr>
             </tbody>
             <?php endforeach;?>
@@ -122,43 +111,6 @@
     </div>
 
 </body>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<footer>
-        <div class="col-md-12">
-            <ul class="footer-nav">
-              <li><a href="home">Home</a></li>
-              <li><a href="home">About</a></li>
-              <li><a href="blog">Blog</a></li>
-              <li><a href="kategori">Kategori</a></li> 
-            </ul>
-          </div>
- <div class="col-md-8 col-md-pull-4">
-            <div class="footer-copyright">
-              <span>&copy; Copyright 2018. All Rights Reserved. | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com">Colorlib</a></span>
-            </div>
-          </div>
-          <!-- /copyright -->
-
-        </div>
-        <!-- row -->
-
-      </div>
-      <!-- /container -->
-
-    </footer>
-    <!-- /Footer -->
-
-    <!-- preloader -->
-    <div id='preloader'><div class='preloader'></div></div>
-    <!-- /preloader -->
-
 
     <!-- jQuery Plugins -->
     <script type="text/javascript" src="assets/js/jquery.min.js"></script>
