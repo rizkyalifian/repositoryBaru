@@ -55,6 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <li class="active"><a href="#">Home</a></li>
         <li><a href="web">About</a></li>
         <li><a href="v_blog">Blog</a></li>
+        <li><a href="kategori">Kategori</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>

@@ -28,7 +28,7 @@
   <div class="container">
   <?php echo validation_errors(); ?>
     <?php 
-      echo form_open('Kategori/create', array ('enctype'=>'multipart/form-data'));
+      echo form_open('kategori/create', array ('enctype'=>'multipart/form-data'));
       ?>
     <h1> Articel</h1>
     <form method="post" class="form-horizontal" enctype="multipart/form-data">
