@@ -9,28 +9,14 @@
   <script src="<?php echo base_url()?>assets/css/bootstrap.js" type="text/javascript"></script>
 </head>
 <body>
-  <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="web">My Blog</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="web">Home</a></li>
-            <li><a href="web">About</a></li>
-            <li class="active"><a href="v_blog">Blog</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <br><br><br>
+  
 
   <div class="container">
   <?php echo validation_errors(); ?>
     <?php 
       echo form_open('v_blog/add', array ('enctype'=>'multipart/form-data'));
       ?>
-    <h1> Articel</h1>
+    <h1> Artikel</h1>
     <form method="post" class="form-horizontal" enctype="multipart/form-data">
       <div class="form-group">
         <label class="control-label col-sm-2">

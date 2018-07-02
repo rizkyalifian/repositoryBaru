@@ -123,4 +123,19 @@ class list_blog extends CI_Model {
     	// Return dalam bentuk object
     	return $query->result();
     }
+    public function get_artikel_by_id($id)
+    {
+         // Inner Join dengan table Categories
+        $this->db->select ( '
+            game_blog.*, 
+            data_blog.kat_id, 
+            data_blog.nama,
+            data_blog.deskripsi,
+        ' );
+        $this->db->join('data_blog', 'data_blog.kat_id = game_blog.kat_id');
+
+    	$query = $this->db->get_where('game_blog', array('game_blog.id' => $id));
+    	            
+		return $query->row();
+    }
 }

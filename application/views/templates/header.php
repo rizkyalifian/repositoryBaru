@@ -32,10 +32,10 @@
                         <a class="nav-link" href="<?php echo site_url() ?>about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url() ?>blog">Artikel</a>
+                        <a class="nav-link" href="<?php echo site_url() ?>v_blog">Artikel</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url() ?>category">Kategori</a>
+                        <a class="nav-link" href="<?php echo site_url() ?>kategori">Kategori</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,8 +60,8 @@
                 <?php if($this->session->userdata('logged_in')) : ?>
                     <div class="btn-group" role="group" aria-label="Data baru">
 
-                        <?php echo anchor('blog/create', 'Artikel Baru', array('class' => 'btn btn-outline-light')); ?>
-                        <?php echo anchor('category/create', 'Kategori Baru', array('class' => 'btn btn-outline-light')); ?>
+                        <?php echo anchor('v_blog/add', 'Artikel Baru', array('class' => 'btn btn-outline-light')); ?>
+                        <?php echo anchor('kategori/create', 'Kategori Baru', array('class' => 'btn btn-outline-light')); ?>
                         <?php echo anchor('user/logout', 'Logout', array('class' => 'btn btn-outline-light')); ?>
                     </div>
                 <?php endif; ?>

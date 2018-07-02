@@ -34,7 +34,7 @@ function __construct()
 			
 
 			//konfigurasi pagination
-			$config['base_url'] = base_url(). 'home_view';
+			$config['base_url'] = base_url(). 'v_blog';
 			$config['total_rows'] = $total_records;
 			$config['per_page'] = $limit_per_page;
 			$config["uri_segment"] = 3;
@@ -44,8 +44,9 @@ function __construct()
 			//Buat link pagination
 			$data["links"]=$this->pagination->create_links();
 		}
-
+		$this->load->view('templates/header');
 		$this->load->view('home_view', $data);
+		$this->load->view('templates/footer');
 	}
 	public function add()
 	{
@@ -65,7 +66,9 @@ function __construct()
 		$this->form_validation->set_rules('Rating','Rating tidak boleh kosong','required',  array ('required' => 'isi %s, ') );
 
   		if($this->form_validation->run()== FALSE){
+  			$this->load->view('templates/header');
   			$this->load->view('data_form_blog',$data);
+  			$this->load->view('templates/footer');
   		}else {
   			if ($this->input->post('simpan'))
   			{
@@ -78,14 +81,18 @@ function __construct()
   					$data['message'] = $upload['error'];
   				}
   			}
+  			$this->load->view('templates/header');
   			$this->load->view('data_form_blog',$data);
+  			$this->load->view('templates/footer');
   		}
 	}
 	public function detail($id)
 	{
 		$this->load->model('list_blog');
 		$data['detail'] = $this->list_blog->get_single($id);
+		
 		$this->load->view('home_detail', $data);
+
 	}
 	
 
@@ -98,15 +105,35 @@ function __construct()
 			$this->list_blog->update($_POST, $id);
 			redirect("v_blog");
 		}
-
-		$this->load->view("data_form_blog",$data);
+			$this->load->view('templates/header');
+  			$this->load->view('data_form_blog',$data);
+  			$this->load->view('templates/footer');
 	}
 
 
-	public function delete($id){
-		$this->load->model("list_blog");
-		$this->list_blog->hapus($id);
-		redirect("v_blog");
+	public function delete($id)
+	{
+		$data['page_title'] = 'Delete artikel';
+
+		// Get artikel dari model berdasarkan $id
+		$data['artikel'] = $this->list_blog->get_artikel_by_id($id);
+
+		// Jika id kosong atau tidak ada id yg dimaksud, lempar user ke halaman blog
+		if ( empty($id) || !$data['artikel'] ) show_404();
+
+		// Hapus artikel sesuai id-nya
+        if( ! $this->list_blog->delete_artikel($id) )
+        {
+        	// Jika gagal, tampilkan failnya
+	        $this->load->view('templates/header');
+	        $this->load->view('blogs/blog_failed', $data);
+	        $this->load->view('templates/footer'); 
+	    } else {
+	    	// Ok, sudah terhapus
+	    	$this->load->view('templates/header');
+	        $this->load->view('blogs/blog_succes', $data);
+	        $this->load->view('templates/footer'); 
+	    }
 	}
 
 	

@@ -31,8 +31,9 @@ class Kategori extends CI_Controller {
   // 			$this->load->view('tampil_kategori', $data);
   // 		}
   		if($this->form_validation->run() === FALSE){
-			
+			$this->load->view('templates/header');
 			$this->load->view('tambah_kategori');
+			$this->load->view('templates/footer');
 			
 		} else {
 			$this->Model_kategori->create_category();
@@ -45,7 +46,9 @@ class Kategori extends CI_Controller {
 		$this->load->model('Model_kategori');
 		// Dapatkan semua kategori
 		$data['kategori'] = $this->Model_kategori->get_all_categories();
+		$this->load->view('templates/header');
 		$this->load->view('tampil_kategori', $data);
+		$this->load->view('templates/footer');
 	}
 	//fungsi delete untuk kategori
 	public function delete($id){

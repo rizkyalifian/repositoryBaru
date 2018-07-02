@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 // Berisi konfigurasi default untuk pagination
-$config['per_page'] = 6;
+$config['per_page'] = 10;
 $config["uri_segment"] = 3;
 
 // Sesuaikan dengan blok element pagination pada Bootstrap

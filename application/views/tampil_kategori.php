@@ -30,50 +30,7 @@
     </head>
   <body>
 
-    <!-- Header -->
-    <header id="header" class="transparent-nav">
-      <div class="container">
-
-        <div class="navbar-header">
-          <!-- Logo -->
-          <div class="navbar-brand">
-            <a class="logo" href="home">
-              <img src="assets/img/sklh.jpeg" alt="logo">
-            </a>
-          </div>
-          <!-- /Logo -->
-
-          <!-- Mobile toggle -->
-          <button class="navbar-toggle">
-            <span></span>
-          </button>
-          <!-- /Mobile toggle -->
-        </div>
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-          <div class="container">
-          <ul class="main-menu nav navbar-nav navbar-right">
-            <li><a href="home">Home</a></li>
-            <li><a href="home">About</a></li>
-            <li><a href="blog">Blog</a></li>
-            <!-- <li><a href="#">Blog</a></li>
-            <li><a href="#">Contact</a></li> -->
-          </ul>
-        </div>
-        </nav>
-        <!-- /Navigation -->
-
-      </div>
-    </header>
-    <!-- /Header -->
-
-    <!-- Home -->
-    <div id="home" class="hero-area">
-
-      <!-- Backgound Image -->
-      <div class="bg-image bg-parallax overlay" style="background-image:url(assets/img/bg.png)"></div>
-      <!-- /Backgound Image -->
+   
 
 <br></br>
 <br></br>

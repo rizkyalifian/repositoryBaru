@@ -36,7 +36,7 @@ class User extends CI_Controller{
 			// Set message
 			$this->session->set_flashdata('user_registered', 'Anda telah teregistrasi.');
 
-			redirect('v_blog');
+			redirect('home');
 		}
 	}
 
@@ -66,7 +66,8 @@ class User extends CI_Controller{
 		$user_data = array(
 			'user_id' => $user_id,
 			'username' => $username,
-			'logged_in' => true
+			'logged_in' => true,
+			'level' => $this->User_model->get_user_level($user_id)
 		);
 
 		$this->session->set_userdata($user_data);
@@ -74,7 +75,7 @@ class User extends CI_Controller{
 		// Set message
 		$this->session->set_flashdata('user_loggedin', 'Anda sudah login');
 
-		redirect('v_blog');
+		redirect('user/dashboard');
 	} else {
 		// Set message
 		$this->session->set_flashdata('login_failed', 'Login invalid');
@@ -95,6 +96,24 @@ class User extends CI_Controller{
 		$this->session->set_flashdata('user_loggedout', 'Anda sudah log out');
 
 		redirect('user/login');
+	}
+
+	// Fungsi Dashboard
+	function dashboard()
+	{
+		// Must login
+		if(!$this->session->userdata('logged_in')) 
+			redirect('user/login');
+
+		$user_id = $this->session->userdata('user_id');
+
+		// Dapatkan detail dari User
+		$data['user'] = $this->User_model->get_user_details( $user_id );
+
+		// Load view
+		$this->load->view('templates/header', $data, FALSE);
+		$this->load->view('user/dashboard', $data, FALSE);
+		$this->load->view('templates/footer', $data, FALSE);
 	}
 
 }
